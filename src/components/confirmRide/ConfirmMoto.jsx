@@ -15,6 +15,7 @@ const ConfirmMoto = () => {
       {/* Logo */}
       <div className="flex justify-start">
         <img
+          onClick={() => navigate("/user-home")}
           className="h-10 sm:h-12 cursor-pointer"
           src={uber}
           alt="Uber Logo"

@@ -30,38 +30,10 @@ const App = () => {
               </UserAuth>
             }
           />
-          <Route
-            path="/confirm-car"
-            element={
-              <UserAuth>
-                <ConfirmCar />
-              </UserAuth>
-            }
-          />
-          <Route
-            path="/confirm-moto"
-            element={
-              <UserAuth>
-                <ConfirmMoto />
-              </UserAuth>
-            }
-          />
-          <Route
-            path="/confirm-auto"
-            element={
-              <UserAuth>
-                <ConfirmAuto />
-              </UserAuth>
-            }
-          />
-          <Route
-            path="/thankyou"
-            element={
-              <UserAuth>
-                <ThankYou />
-              </UserAuth>
-            }
-          />
+          <Route path="/confirm-car" element={<ConfirmCar />} />
+          <Route path="/confirm-moto" element={<ConfirmMoto />} />
+          <Route path="/confirm-auto" element={<ConfirmAuto />} />
+          <Route path="/thankyou" element={<ThankYou />} />
           {/* Capatain routes */}
           <Route path="/captain-register" element={<CaptainRegister />} />
           <Route path="/captain-login" element={<CaptainLogin />} />
