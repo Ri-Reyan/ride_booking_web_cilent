@@ -3,10 +3,10 @@ import { createContext, useContext, useState } from "react";
 export const CaptainContext = createContext();
 
 export const CaptainProvider = ({ children }) => {
-  const [captainData, setUserData] = useState({});
+  const [captainData, setCaptainData] = useState({});
   const value = {
     captainData,
-    setUserData,
+    setCaptainData,
   };
 
   return (

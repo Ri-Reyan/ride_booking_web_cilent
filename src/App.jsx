@@ -11,6 +11,7 @@ import ConfirmCar from "./components/confirmRide/ConfirmCar";
 import ConfirmMoto from "./components/confirmRide/ConfirmMoto";
 import ConfirmAuto from "./components/confirmRide/ConfirmAuto";
 import ThankYou from "./components/ThankYou";
+import CaptainHome from "./pages/captain/CaptainHome";
 
 const App = () => {
   return (
@@ -64,6 +65,7 @@ const App = () => {
           {/* Capatain routes */}
           <Route path="/captain-register" element={<CaptainRegister />} />
           <Route path="/captain-login" element={<CaptainLogin />} />
+          <Route path="/captain-home" element={<CaptainHome />} />
         </Routes>
       </div>
     </div>

@@ -26,6 +26,7 @@ const CaptainLogin = () => {
       );
 
       if (response.status === 200) {
+        navigate("/captain-home");
         setEmail("");
         setPassword("");
       }
@@ -35,60 +36,78 @@ const CaptainLogin = () => {
   };
 
   return (
-    <div className="h-screen w-screen overflow-x-hidden p-4">
-      <div>
-        <img onClick={() => navigate("/")} className="h-10" src={uber} alt="" />
+    <div className="min-h-screen w-full p-4 overflow-x-hidden flex flex-col items-center">
+      {/* Top Logo */}
+      <div className="w-full max-w-[500px]">
+        <img
+          onClick={() => navigate("/")}
+          className="h-12 cursor-pointer"
+          src={uber}
+          alt="Uber logo"
+        />
       </div>
 
-      <div className="mt-4">
-        <form onSubmit={handleSubmit}>
-          <h3 className="text-xl font-semibold mt-4 mb-2">What's your email</h3>
-          <input
-            className="h-14 p-3 w-full rounded bg-[#eeeeee] focus:outline-none"
-            type="email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            placeholder="example@email.com"
-          />
-          <h3 className="text-xl font-semibold mt-4 mb-2">Enter Password</h3>
+      {/* Login Form */}
+      <div className="w-full max-w-[500px] mt-6">
+        <form onSubmit={handleSubmit} className="space-y-6">
           <div>
+            <h3 className="text-xl font-semibold">What's your email</h3>
             <input
-              className="h-14 p-3 w-full rounded bg-[#eeeeee] focus:outline-none"
-              type={show ? "text" : "password"}
-              name="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              className="h-14 p-3 w-full rounded bg-[#eeeeee] focus:outline-none mt-2"
+              type="email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               required
-              placeholder="password"
-            />
-            <Lottie
-              onClick={() => setShow(!show)}
-              className="h-10 relative bottom-12 left-36"
-              animationData={eye}
-              loop={true}
+              placeholder="example@email.com"
             />
           </div>
-          <button className="h-14 w-full text-center text-xl font-semibold bg-black text-white mt-6 rounded hover:scale-90">
+
+          <div>
+            <h3 className="text-xl font-semibold">Enter Password</h3>
+
+            <div className="relative mt-2">
+              <input
+                className="h-14 p-3 w-full rounded bg-[#eeeeee] focus:outline-none"
+                type={show ? "text" : "password"}
+                name="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                placeholder="password"
+              />
+
+              <div className="absolute right-3 top-3 h-8 w-8 cursor-pointer">
+                <Lottie
+                  onClick={() => setShow(!show)}
+                  animationData={eye}
+                  loop
+                />
+              </div>
+            </div>
+          </div>
+
+          <button className="h-14 w-full text-center text-xl font-semibold bg-black text-white rounded hover:opacity-80 transition">
             Login
           </button>
         </form>
       </div>
 
-      <div>
-        <h1
+      {/* Redirect */}
+      <div className="w-full max-w-[500px] mt-4 text-center">
+        <p
           onClick={() => navigate("/captain-register")}
-          className="text-center text-lg font-normal"
+          className="text-lg cursor-pointer"
         >
           New here? <span className="text-blue-600">Create new account</span>
-        </h1>
+        </p>
       </div>
 
-      <div className="mt-[30vh]">
+      {/* User Login CTA */}
+      <div className="w-full max-w-[500px] mt-20">
         <button
           onClick={() => navigate("/user-login")}
-          className="h-14 w-full text-center text-xl font-semibold bg-green-500 text-white mt-6 rounded hover:scale-90"
+          className="h-14 w-full text-center text-xl font-semibold bg-green-500 text-white rounded hover:opacity-80 transition"
         >
           Sign in as User
         </button>

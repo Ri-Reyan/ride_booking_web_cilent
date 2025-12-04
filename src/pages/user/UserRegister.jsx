@@ -41,17 +41,25 @@ const UserRegister = () => {
   };
 
   return (
-    <div className="h-screen w-full overflow-x-hidden p-4">
+    <div className="min-h-screen w-full overflow-x-hidden p-4 flex flex-col justify-between">
+      {/* Logo */}
       <div>
-        <img onClick={() => navigate("/")} className="h-10" src={uber} alt="" />
+        <img
+          onClick={() => navigate("/")}
+          className="h-10 cursor-pointer"
+          src={uber}
+          alt="logo"
+        />
       </div>
 
-      <div>
+      {/* Form */}
+      <div className="mt-4 max-w-md mx-auto w-full">
         <form onSubmit={handleSubmit}>
+          {/* Name Fields */}
           <h3 className="text-xl font-semibold mt-4">What's your name</h3>
-          <div className="w-full flex gap-2">
+          <div className="w-full flex gap-2 mt-4">
             <input
-              className="h-14 w-1/2 bg-[#eeeeee] text-lg p-3 rounded mt-4 mb-2 focus:outline-none"
+              className="h-14 w-1/2 bg-[#eeeeee] text-lg p-3 rounded focus:outline-none"
               type="text"
               name="firstname"
               value={firstname}
@@ -60,7 +68,7 @@ const UserRegister = () => {
               placeholder="First name"
             />
             <input
-              className="h-14 w-1/2 bg-[#eeeeee] text-lg p-3 rounded mt-4 mb-2 focus:outline-none"
+              className="h-14 w-1/2 bg-[#eeeeee] text-lg p-3 rounded focus:outline-none"
               type="text"
               name="lastname"
               value={lastname}
@@ -69,9 +77,11 @@ const UserRegister = () => {
               placeholder="Last name"
             />
           </div>
+
+          {/* Email Field */}
           <h3 className="text-xl font-semibold mt-4">What's your email</h3>
           <input
-            className="h-14 w-full bg-[#eeeeee] text-lg p-3 rounded mt-4 mb-2 focus:outline-none"
+            className="h-14 w-full bg-[#eeeeee] text-lg p-3 rounded mt-4 focus:outline-none"
             type="email"
             name="email"
             value={email}
@@ -79,8 +89,10 @@ const UserRegister = () => {
             required
             placeholder="email"
           />
+
+          {/* Password Field */}
           <h3 className="text-xl font-semibold mt-4">Enter password</h3>
-          <div className="mt-4">
+          <div className="relative mt-4 w-full">
             <input
               className="h-14 p-3 w-full rounded bg-[#eeeeee] focus:outline-none"
               type={show ? "text" : "password"}
@@ -90,32 +102,39 @@ const UserRegister = () => {
               required
               placeholder="password"
             />
-            <Lottie
+
+            {/* Responsive Eye Icon */}
+            <div
               onClick={() => setShow(!show)}
-              className="h-10 relative bottom-12 left-36"
-              animationData={eye}
-              loop={true}
-            />
+              className="absolute top-1/2 right-4 -translate-y-1/2 h-8 w-8 cursor-pointer lg:h-10 lg:w-10"
+            >
+              <Lottie animationData={eye} loop />
+            </div>
           </div>
-          <button className="h-14 w-full  text-center text-xl font-semibold bg-black text-white mt-6 rounded hover:scale-90">
+
+          {/* Submit Button */}
+          <button className="h-14 w-full text-center text-xl font-semibold bg-black text-white mt-6 rounded hover:scale-95 transition">
             Sign Up
           </button>
         </form>
       </div>
-      <div>
+
+      {/* Login Redirect */}
+      <div className="mt-6">
         <h1
           onClick={() => navigate("/user-login")}
-          className="text-center text-lg font-normal tracking-tight"
+          className="text-center text-lg font-normal cursor-pointer"
         >
           Already have an account?{" "}
           <span className="text-blue-600">Login instead</span>
         </h1>
       </div>
 
-      <h1 className="mt-[10vh] text-[12px] font-normal tracking-tighter text-center">
+      {/* Consent Text */}
+      <h1 className="mt-8 text-[12px] font-normal text-center max-w-md mx-auto text-gray-600">
         By proceeding, you consent to get calls, WhatsApp or SMS messages,
         including by automated means, from Uber & its affiliates to the number
-        provided
+        provided.
       </h1>
     </div>
   );

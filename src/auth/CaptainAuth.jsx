@@ -16,6 +16,7 @@ const CaptainAuth = ({ children }) => {
           { withCredentials: true }
         );
         setCaptainData(res.data);
+        navigate("/captain-home");
       } catch (err) {
         navigate("/captain-login");
       }

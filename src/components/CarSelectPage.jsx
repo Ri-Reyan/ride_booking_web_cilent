@@ -15,61 +15,68 @@ const CarSelectPage = () => {
     navigate(`/confirm-${type}`);
   };
 
+  const cardBase =
+    "flex items-center gap-4 border-2 rounded-xl p-3 mb-3 transition-all cursor-pointer hover:border-yellow-600";
+
   return (
-    <div className="p-2">
-      <IoIosArrowBack onClick={() => setCarSelect(!carselect)} size={"30px"} />
-      <div
-        onClick={() => {
-          handleSelect("car"), navigate("/confirm-car");
-        }}
-        className="flex flex-row h-16 w-full border-[2px] rounded-xl border-black gap-3 place-items-center p-2 mb-2 hover:border-yellow-600"
-      >
-        <img className="h-auto w-1/4" src={car} alt="Uber car Icon" />
-        <div>
-          <div className="flex flex-row gap-6 text-center">
-            <h1 className="text-base font-semibold">UberGo</h1>
-            <p className="text-base font-semibold">$ 193.20</p>
+    <div className="p-4 w-full max-w-[600px] mx-auto">
+      <IoIosArrowBack
+        onClick={() => setCarSelect(!carselect)}
+        size={28}
+        className="cursor-pointer mb-4"
+      />
+
+      {/* Car Option */}
+      <div onClick={() => handleSelect("car")} className={`${cardBase}`}>
+        <img
+          className="w-20 h-auto object-contain sm:w-24"
+          src={car}
+          alt="Uber Car"
+        />
+
+        <div className="flex flex-col w-full">
+          <div className="flex justify-between">
+            <h1 className="text-base sm:text-lg font-semibold">UberGo</h1>
+            <p className="text-base sm:text-lg font-semibold">$193.20</p>
           </div>
-          <h1 className="text-sm text-gray-500 font-semibold">2 mins away</h1>
-          <h1 className="text-sm text-gray-500 font-semibold ">
-            Affordable Compact rides
-          </h1>
+          <p className="text-sm text-gray-500">2 mins away</p>
+          <p className="text-sm text-gray-500">Affordable compact rides</p>
         </div>
       </div>
-      <div
-        onClick={() => {
-          handleSelect("moto"), navigate("/confirm-moto");
-        }}
-        className="flex flex-row h-16 w-full border-[2px] rounded-xl border-black gap-3 place-items-center p-2 mb-2 hover:border-yellow-600"
-      >
-        <img className="h-auto w-1/4" src={moto} alt="Uber car Icon" />
-        <div>
-          <div className="flex flex-row gap-6 text-center">
-            <h1 className="text-base font-semibold">Moto</h1>
-            <p className="text-base font-semibold">$ 100.20</p>
+
+      {/* Moto Option */}
+      <div onClick={() => handleSelect("moto")} className={`${cardBase}`}>
+        <img
+          className="w-20 h-auto object-contain sm:w-24"
+          src={moto}
+          alt="Uber Moto"
+        />
+
+        <div className="flex flex-col w-full">
+          <div className="flex justify-between">
+            <h1 className="text-base sm:text-lg font-semibold">Moto</h1>
+            <p className="text-base sm:text-lg font-semibold">$100.20</p>
           </div>
-          <h1 className="text-sm text-gray-500 font-semibold">3 mins away</h1>
-          <h1 className="text-sm text-gray-500 font-semibold ">
-            Affordable Motorcycle rides
-          </h1>
+          <p className="text-sm text-gray-500">3 mins away</p>
+          <p className="text-sm text-gray-500">Affordable motorcycle rides</p>
         </div>
       </div>
-      <div
-        onClick={() => {
-          handleSelect("auto"), navigate("/confirm-auto");
-        }}
-        className="flex flex-row h-16 w-full border-[2px] rounded-xl border-black gap-3 place-items-center p-2 mb-2 hover:border-yellow-600"
-      >
-        <img className="h-auto w-1/4" src={auto} alt="Uber car Icon" />
-        <div>
-          <div className="flex flex-row gap-6 text-center">
-            <h1 className="text-base font-semibold">Auto</h1>
-            <p className="text-base font-semibold">$ 60.20</p>
+
+      {/* Auto Option */}
+      <div onClick={() => handleSelect("auto")} className={`${cardBase}`}>
+        <img
+          className="w-20 h-auto object-contain sm:w-24"
+          src={auto}
+          alt="Uber Auto"
+        />
+
+        <div className="flex flex-col w-full">
+          <div className="flex justify-between">
+            <h1 className="text-base sm:text-lg font-semibold">Auto</h1>
+            <p className="text-base sm:text-lg font-semibold">$60.20</p>
           </div>
-          <h1 className="text-sm text-gray-500 font-semibold">6 mins away</h1>
-          <h1 className="text-sm text-gray-500 font-semibold ">
-            Affordable Auto rides
-          </h1>
+          <p className="text-sm text-gray-500">6 mins away</p>
+          <p className="text-sm text-gray-500">Affordable auto rides</p>
         </div>
       </div>
     </div>

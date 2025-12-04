@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import uber from "../../assets/images/Uber_logo_2018.png";
 import map from "../../assets/images/map.png";
 import { useGSAP } from "@gsap/react";
@@ -9,25 +9,23 @@ import { useApp } from "../../context/AppContext";
 import { useNavigate } from "react-router-dom";
 
 const UserHome = () => {
-  const app = useApp();
-  const { pickup, setPickup, drop, setDrop, carselect } = app;
+  const { pickup, setPickup, drop, setDrop, carselect } = useApp();
   const panelRef = useRef(null);
   const navigate = useNavigate();
 
+  // GSAP panel animation
   useGSAP(
     () => {
-      if (pickup.length > 0 && drop.length > 0) {
+      if (pickup && drop) {
         gsap.to(panelRef.current, {
-          height: "40%",
-          duration: 0.3,
-          display: "block",
+          height: "55vh",
+          duration: 0.35,
           ease: "power2.out",
         });
       } else {
         gsap.to(panelRef.current, {
-          height: "0%",
-          display: "none",
-          duration: 0.3,
+          height: "0vh",
+          duration: 0.35,
           ease: "power2.inOut",
         });
       }
@@ -36,35 +34,39 @@ const UserHome = () => {
   );
 
   return (
-    <div className="h-screen w-full p-0 overflow-x-hidden relative">
+    <div className="min-h-full w-full overflow-x-hidden relative bg-gray-50">
+      {/* Map Background */}
       <div
-        className="bg-cover bg-center bg-no-repeat h-full w-full"
+        className="h-screen w-screen bg-cover bg-center bg-no-repeat relative"
         style={{ backgroundImage: `url(${map})` }}
       >
-        <img
-          onClick={() => navigate("/")}
-          className="h-16 p-4"
-          src={uber}
-          alt="Uber logo"
-        />
+        {/* Top Logo */}
+        <div className="p-4">
+          <img
+            src={uber}
+            alt="Uber logo"
+            className="h-10 sm:h-12 md:h-16 cursor-pointer"
+            onClick={() => navigate("/")}
+          />
+        </div>
 
-        {/* Trip Form (NO ABSOLUTE POSITIONING) */}
-        <div className="w-full bg-transparent">
-          <h1 className="text-2xl font-semibold px-4 mt-4">Find a trip</h1>
-          <form className="flex flex-col p-4">
+        {/* Trip Form */}
+        <div className="mt-2 px-4 max-w-xl w-full mx-auto">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
+            Find a trip
+          </h1>
+          <form className="flex flex-col mt-4 w-full gap-4">
             <input
-              className="h-14 w-full bg-[#eeeeee] rounded text-lg font-medium px-4 mt-2 mb-2 focus:outline-none"
+              className="h-14 w-full bg-white rounded-lg text-lg sm:text-xl font-medium px-4 shadow focus:outline-none focus:ring-2 focus:ring-indigo-500"
               type="text"
-              name="pickup"
               value={pickup}
               onChange={(e) => setPickup(e.target.value)}
               placeholder="Pick-up location"
               required
             />
             <input
-              className="h-14 w-full bg-[#eeeeee] rounded text-lg font-medium px-4 mt-4 mb-2 focus:outline-none"
+              className="h-14 w-full bg-white rounded-lg text-lg sm:text-xl font-medium px-4 shadow focus:outline-none focus:ring-2 focus:ring-indigo-500"
               type="text"
-              name="drop"
               value={drop}
               onChange={(e) => setDrop(e.target.value)}
               placeholder="Drop location"
@@ -73,12 +75,15 @@ const UserHome = () => {
           </form>
         </div>
 
-        {/* GSAP Bottom Panel (Only absolute element) */}
+        {/* GSAP Animated Bottom Panel */}
         <div
           ref={panelRef}
-          className="w-full absolute bottom-0 bg-white overflow-hidden"
+          className="w-full absolute bottom-0 bg-white overflow-hidden shadow-2xl rounded-t-3xl
+          "
         >
-          {carselect ? <CarSelectPage /> : <LocationSearchPanel />}
+          <div className="max-w-xl mx-auto p-4">
+            {carselect ? <CarSelectPage /> : <LocationSearchPanel />}
+          </div>
         </div>
       </div>
     </div>
